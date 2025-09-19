@@ -49,9 +49,9 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-black">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+        <h2 className="text-3xl font-bold text-center text-yellow-400 mb-12">
           What Our Clients Say
         </h2>
 
@@ -74,34 +74,34 @@ const TestimonialsSection = () => {
                 ease: "linear",
               },
             }}
-            // Pause animation when hovered
-            whileHover={{ animationPlayState: "paused" }}
-            // Control pause state programmatically
             style={{ animationPlayState: isPaused ? "paused" : "running" }}
           >
             {duplicatedTestimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-gray-50 p-6 rounded-xl mr-8 flex-shrink-0 relative"
-                // Add blue shadow using custom style
+                className="bg-black border border-yellow-600 p-6 rounded-xl mr-8 flex-shrink-0 relative text-yellow-100"
                 style={{
                   width: "calc(33.333% - 16px)",
                   boxShadow:
-                    "0 10px 30px rgba(59, 130, 246, 0.2), 0 4px 12px rgba(59, 130, 246, 0.1)",
+                    "0 10px 30px rgba(255, 215, 0, 0.25), 0 4px 12px rgba(255, 215, 0, 0.15)",
                 }}
               >
                 <div className="flex items-center mb-4">
                   <img
                     src={testimonial.avatar}
                     alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-yellow-500"
                   />
                   <div className="ml-4">
-                    <h4 className="font-semibold">{testimonial.name}</h4>
-                    <p className="text-blue-600 text-sm">{testimonial.role}</p>
+                    <h4 className="font-semibold text-yellow-300">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-yellow-500 text-sm">{testimonial.role}</p>
                   </div>
                 </div>
-                <p className="text-gray-600">"{testimonial.content}"</p>
+                <p className="text-yellow-100 italic">
+                  "{testimonial.content}"
+                </p>
                 <div className="flex mt-4">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <svg
@@ -119,9 +119,9 @@ const TestimonialsSection = () => {
             ))}
           </motion.div>
 
-          {/* Gradient overlays for a smoother look */}
-          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent z-10"></div>
-          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent z-10"></div>
+          {/* Gradient overlays for smoother edges */}
+          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent z-10"></div>
+          <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent z-10"></div>
         </div>
       </div>
     </section>

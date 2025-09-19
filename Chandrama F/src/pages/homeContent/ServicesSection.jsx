@@ -62,7 +62,7 @@ const ServicesSection = () => {
   const [activeService, setActiveService] = useState(null);
 
   return (
-    <div className="py-16 bg-gradient-to-b from-white to-blue-50 text-center">
+    <div className="py-16 bg-black text-center">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -72,10 +72,10 @@ const ServicesSection = () => {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+          <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
             Our Premium Services
           </h2>
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+          <p className="text-gray-300 mt-4 max-w-2xl mx-auto">
             Assetlive offers comprehensive real estate services to make property
             management easier & affordable. From documentation to moving in,
             we've got you covered at every step.
@@ -83,17 +83,17 @@ const ServicesSection = () => {
 
           {/* Stats */}
           <div className="mt-8 flex flex-wrap justify-center gap-6">
-            <div className="bg-white p-4 rounded-xl shadow-md">
-              <p className="text-2xl font-bold text-blue-600">500+</p>
-              <p className="text-gray-500">Happy Clients</p>
+            <div className="bg-black border border-yellow-500 p-4 rounded-xl shadow-md">
+              <p className="text-2xl font-bold text-yellow-400">500+</p>
+              <p className="text-gray-300">Happy Clients</p>
             </div>
-            <div className="bg-white p-4 rounded-xl shadow-md">
-              <p className="text-2xl font-bold text-blue-600">98%</p>
-              <p className="text-gray-500">Success Rate</p>
+            <div className="bg-black border border-yellow-500 p-4 rounded-xl shadow-md">
+              <p className="text-2xl font-bold text-yellow-400">98%</p>
+              <p className="text-gray-300">Success Rate</p>
             </div>
-            <div className="bg-white p-4 rounded-xl shadow-md">
-              <p className="text-2xl font-bold text-blue-600">15+</p>
-              <p className="text-gray-500">Years Experience</p>
+            <div className="bg-black border border-yellow-500 p-4 rounded-xl shadow-md">
+              <p className="text-2xl font-bold text-yellow-400">15+</p>
+              <p className="text-gray-300">Years Experience</p>
             </div>
           </div>
         </motion.div>
@@ -109,7 +109,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="bg-white border rounded-xl p-6 shadow-md hover:shadow-xl transition-all cursor-pointer group relative overflow-hidden"
+              className="bg-black border border-yellow-500 rounded-xl p-6 shadow-md hover:shadow-xl transition-all cursor-pointer group relative overflow-hidden"
               whileHover={{ scale: 1.03, y: -5 }}
               whileTap={{ scale: 0.97 }}
               initial={{ opacity: 0, y: 20 }}
@@ -120,19 +120,19 @@ const ServicesSection = () => {
               onHoverEnd={() => setActiveService(null)}
             >
               {/* Decorative element */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-purple-500"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-600"></div>
 
               {/* Icon */}
-              <div className="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+              <div className="w-16 h-16 mx-auto mb-4 bg-yellow-900 rounded-xl flex items-center justify-center group-hover:bg-yellow-700 transition-colors">
                 <span className="text-3xl">{service.icon}</span>
               </div>
 
-              <h3 className="text-blue-600 font-semibold text-lg group-hover:text-blue-800 transition-colors">
+              <h3 className="text-yellow-400 font-semibold text-lg group-hover:text-yellow-500 transition-colors">
                 {service.name}
               </h3>
 
               <motion.p
-                className="text-gray-500 text-sm mt-3 h-12 overflow-hidden"
+                className="text-gray-300 text-sm mt-3 h-12 overflow-hidden"
                 animate={{ height: activeService === index ? "auto" : "3rem" }}
                 transition={{ duration: 0.3 }}
               >
@@ -140,11 +140,11 @@ const ServicesSection = () => {
               </motion.p>
 
               {/* Hover effect overlay */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-yellow-900/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl"></div>
 
               {/* Learn more button */}
               <motion.button
-                className="mt-4 text-blue-600 font-medium text-sm flex items-center justify-center gap-1 mx-auto opacity-0 group-hover:opacity-100 transition-opacity"
+                className="mt-4 text-yellow-400 font-medium text-sm flex items-center justify-center gap-1 mx-auto opacity-0 group-hover:opacity-100 transition-opacity"
                 whileHover={{ x: 5 }}
               >
                 Learn more
@@ -171,18 +171,18 @@ const ServicesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
           viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-white shadow-lg"
+          className="mt-16 bg-gradient-to-r from-yellow-600 to-yellow-800 rounded-2xl p-8 text-white shadow-lg"
         >
           <h3 className="text-2xl font-bold mb-4">Need Custom Services?</h3>
-          <p className="mb-6 max-w-2xl mx-auto">
+          <p className="mb-6 max-w-2xl mx-auto text-yellow-100">
             Our experts are ready to provide tailored solutions for your
             specific real estate needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors shadow-md">
+            <button className="bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 transition-colors shadow-md">
               Book a Consultation
             </button>
-            <button className="border border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors">
+            <button className="border border-yellow-400 text-yellow-400 px-6 py-3 rounded-full font-semibold hover:bg-yellow-600/20 transition-colors">
               Call Us Now
             </button>
           </div>
