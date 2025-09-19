@@ -115,6 +115,11 @@ exports.getAllPublic = async (req, res) => {
       location: p.location,
       image: p.images && p.images.length ? p.images[0] : null,
       squareFeet: p.squareFeet,
+      facing: p.facing,
+      boundary: p.boundary,
+      description: p.description,
+      amenities: p.amenities,
+      address: p.address,
     }));
     res.json({ plots: list });
   } catch (err) {
