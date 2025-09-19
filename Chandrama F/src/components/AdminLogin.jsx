@@ -11,13 +11,13 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-const Login = () => {
+const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { login } = useContext(AuthContext);
+  const { loginAdmin } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -55,11 +55,11 @@ const Login = () => {
     setIsSubmitting(true);
     setErrors({});
     try {
-      const result = await login(formData);
+      const result = await loginAdmin(formData);
       if (result.success) {
         setIsSuccess(true);
         setTimeout(() => {
-          navigate("/"); // or wherever you want to go after login
+          navigate("/admin/dashboard"); // or wherever you want to go after login
         }, 1500);
       } else {
         setErrors({ general: result.message });
@@ -290,4 +290,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;

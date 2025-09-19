@@ -8,24 +8,34 @@ import Contact from "./pages/Contact";
 import Login from "./components/Login";
 import Footer from "./components/Footer";
 import { AuthProvider } from "./context/AuthContext";
+import Signup from "./components/Signup";
+import { PropertyProvider } from "./context/PropertyContext";
+import AdminDashboard from "./admin/AdminDashboard";
+import AdminLogin from "./components/AdminLogin";
 const App = () => {
   return (
     <AuthProvider>
-      <Router>
-        <Navbar />
-        <div className="min-h-[80vh]">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </div>
+      <PropertyProvider>
+        <Router>
+          <Navbar />
+          <div className="min-h-[80vh]">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
 
-        <Footer />
-      </Router>
+
+              <Route path="/admin/dashboard" element={<AdminDashboard/>} />
+              <Route path="/admin/login" element={<AdminLogin/>} />
+            </Routes>
+          </div>
+    
+          <Footer />
+        </Router>
+      </PropertyProvider>
     </AuthProvider>
   );
 };

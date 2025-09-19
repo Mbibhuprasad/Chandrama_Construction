@@ -5,117 +5,86 @@ import SearchBar from "./homeContent/search";
 import PropertiesSection from "./homeContent/PropertiesSection";
 import ServicesSection from "./homeContent/ServicesSection";
 import TestimonialsSection from "./homeContent/TestimonialsSection";
+import { useProperty } from "../context/PropertyContext";
 
 const Home = () => {
-  const [filteredProperties, setFilteredProperties] = useState([]);
+  // const [filteredProperties, setFilteredProperties] = useState([]);
   const [activeFilter, setActiveFilter] = useState("all");
+
+  const { filteredProperties, loading, error, filterProperties } = useProperty();
 
   const handleSearch = (filters) => {
     console.log("Search filters:", filters);
-    // Filter properties based on search criteria
-    let filtered = properties;
-
-    if (filters.query) {
-      filtered = filtered.filter(
-        (prop) =>
-          prop.title.toLowerCase().includes(filters.query.toLowerCase()) ||
-          prop.location.toLowerCase().includes(filters.query.toLowerCase())
-      );
-    }
-
-    if (filters.status) {
-      filtered = filtered.filter((prop) => prop.status === filters.status);
-    }
-
-    if (filters.propertyType) {
-      filtered = filtered.filter((prop) => prop.type === filters.propertyType);
-    }
-
-    if (filters.minPrice) {
-      filtered = filtered.filter(
-        (prop) => prop.price >= parseFloat(filters.minPrice)
-      );
-    }
-
-    if (filters.maxPrice) {
-      filtered = filtered.filter(
-        (prop) => prop.price <= parseFloat(filters.maxPrice)
-      );
-    }
-
-    setFilteredProperties(filtered);
+    filterProperties(filters);
   };
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
+    
     if (filter === "all") {
-      setFilteredProperties(properties);
+      filterProperties({}); // Reset filters to show all
     } else {
-      setFilteredProperties(
-        properties.filter((prop) => prop.status === filter)
-      );
+      // You might need to adjust this based on your property data structure
+      // For example, if you have a 'status' field in your plots
+      filterProperties({ status: filter });
     }
   };
 
-  useEffect(() => {
-    setFilteredProperties(properties);
-  }, []);
-
-  const properties = [
-    {
-      id: "1235013",
-      title: "1400 Sqft Residential Land For Buy",
-      location: "Kantabad, Bhubaneswar",
-      area: 1400,
-      width: 30,
-      breadth: 46,
-      price: 26,
-      status: "buy",
-      type: "residential",
-      bedrooms: 3,
-      bathrooms: 2,
-      description:
-        "BRUKSHYA VIHAR - A Gated Community Project with Nature & Highway",
-      contact: "8144091440",
-      features: ["Gated Community", "Park", "Water Supply", "Power Backup"],
-      image: "data:image/jpeg;base64,...",
-    },
-    {
-      id: "1235008",
-      title: "1500 Sqft Residential Land For Buy",
-      location: "Benapanjari, Jatani, Odisha",
-      area: 1500,
-      width: 30,
-      breadth: 50,
-      price: 10.48,
-      status: "buy",
-      type: "residential",
-      bedrooms: 4,
-      bathrooms: 3,
-      description:
-        "DHARITRI VIHAR - A Gated Community Project with Nature & Highway",
-      contact: "8144091440",
-      features: ["Near Highway", "Security", "Garden", "Shopping Center"],
-      image: "data:image/jpeg;base64,...",
-    },
-    {
-      id: "1235009",
-      title: "1200 Sqft Apartment For Rent",
-      location: "Nayapalli, Bhubaneswar",
-      area: 1200,
-      width: 0,
-      breadth: 0,
-      price: 15,
-      status: "rent",
-      type: "apartment",
-      bedrooms: 2,
-      bathrooms: 2,
-      description: "Modern apartment with amenities in prime location",
-      contact: "8144091440",
-      features: ["Furnished", "Swimming Pool", "Gym", "24/7 Security"],
-      image: "data:image/jpeg;base64,...",
-    },
-  ];
+  // const properties = [
+  //   {
+  //     id: "1235013",
+  //     title: "1400 Sqft Residential Land For Buy",
+  //     location: "Kantabad, Bhubaneswar",
+  //     area: 1400,
+  //     width: 30,
+  //     breadth: 46,
+  //     price: 26,
+  //     status: "buy",
+  //     type: "residential",
+  //     bedrooms: 3,
+  //     bathrooms: 2,
+  //     description:
+  //       "BRUKSHYA VIHAR - A Gated Community Project with Nature & Highway",
+  //     contact: "8144091440",
+  //     features: ["Gated Community", "Park", "Water Supply", "Power Backup"],
+  //     image: "data:image/jpeg;base64,...",
+  //   },
+  //   {
+  //     id: "1235008",
+  //     title: "1500 Sqft Residential Land For Buy",
+  //     location: "Benapanjari, Jatani, Odisha",
+  //     area: 1500,
+  //     width: 30,
+  //     breadth: 50,
+  //     price: 10.48,
+  //     status: "buy",
+  //     type: "residential",
+  //     bedrooms: 4,
+  //     bathrooms: 3,
+  //     description:
+  //       "DHARITRI VIHAR - A Gated Community Project with Nature & Highway",
+  //     contact: "8144091440",
+  //     features: ["Near Highway", "Security", "Garden", "Shopping Center"],
+  //     image: "data:image/jpeg;base64,...",
+  //   },
+  //   {
+  //     id: "1235009",
+  //     title: "1200 Sqft Apartment For Rent",
+  //     location: "Nayapalli, Bhubaneswar",
+  //     area: 1200,
+  //     width: 0,
+  //     breadth: 0,
+  //     price: 15,
+  //     status: "rent",
+  //     type: "apartment",
+  //     bedrooms: 2,
+  //     bathrooms: 2,
+  //     description: "Modern apartment with amenities in prime location",
+  //     contact: "8144091440",
+  //     features: ["Furnished", "Swimming Pool", "Gym", "24/7 Security"],
+  //     image: "data:image/jpeg;base64,...",
+  //   },
+  // ];
 
   return (
     <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen">
