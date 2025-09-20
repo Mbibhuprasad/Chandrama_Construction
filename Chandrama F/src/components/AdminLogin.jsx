@@ -87,7 +87,7 @@ const AdminLogin = () => {
             transition={{ delay: 0.2 }}
             className="text-3xl font-bold text-yellow-400 mb-2"
           >
-            Welcome Back
+            Welcome Back Admin
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -222,7 +222,7 @@ const AdminLogin = () => {
         </form>
 
         {/* Sign up link */}
-        <p className="text-center mt-6 text-yellow-300">
+        {/* <p className="text-center mt-6 text-yellow-300">
           Don't have an account?{" "}
           <Link
             to="/signup"
@@ -230,7 +230,7 @@ const AdminLogin = () => {
           >
             Sign up
           </Link>
-        </p>
+        </p> */}
       </motion.div>
     </div>
   );
